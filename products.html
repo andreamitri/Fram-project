@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Produce - Fram, home delivery from your local farms</title>
+    <meta
+      name="description"
+      content="Browse Fram's seasonal produce sourced from local Norwegian farms."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400&family=Arimo:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+    />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="nav" id="nav">
+      <button
+        class="nav__menu-btn"
+        id="menuBtn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navDrawer"
+      >
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+      <a href="index.html" class="nav__logo" aria-label="Fram — go to homepage"
+        >FRAM</a
+      >
+      <button class="nav__basket" id="basketBtn" aria-label="Basket, 0 items">
+        <span id="basketCount" aria-hidden="true">0</span>
+      </button>
+    </header>
+
+    <div
+      class="drawer"
+      id="navDrawer"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
+    >
+      <div class="drawer__overlay" id="drawerOverlay"></div>
+      <nav class="drawer__panel" aria-label="Site navigation">
+        <button
+          class="drawer__close"
+          id="drawerClose"
+          aria-label="Close navigation menu"
+        >
+          ✕
+        </button>
+        <a href="index.html" class="drawer__link">HOME</a>
+        <a href="products.html" class="drawer__link" aria-current="page"
+          >PRODUCTS</a
+        >
+        <a href="chat.html" class="drawer__link">CHAT</a>
+        <a
+          href="order.html"
+          class="drawer__link drawer__link--checkout"
+          id="checkoutLink"
+          >CHECKOUT</a
+        >
+      </nav>
+    </div>
+
+    <main id="main-content" tabindex="-1" class="produce-page">
+      <section class="produce-section" aria-labelledby="produce-title">
+        <h1 id="produce-title" class="produce-section__title">PRODUCE</h1>
+        <p class="produce-section__desc">
+          Explore our selection of seasonal produce, sourced directly from local
+          farms to ensure peak freshness and quality. Every item is chosen with
+          care, supporting sustainable practices and bringing the best of the
+          harvest to your table.
+        </p>
+
+        <div
+          class="ai-search"
+          role="search"
+          aria-label="AI-powered product search"
+        >
+          <div class="ai-search__row">
+            <label for="aiSearch" class="sr-only"
+              >Search produce using AI</label
+            >
+            <input
+              type="text"
+              id="aiSearch"
+              class="ai-search__input"
+              placeholder='Ask AI — e.g. "what goes well in a soup?"'
+              autocomplete="off"
+              aria-describedby="aiSearchHint"
+            />
+            <button
+              class="ai-search__btn"
+              id="aiSearchBtn"
+              aria-label="Search with AI"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </button>
+          </div>
+          <p id="aiSearchHint" class="ai-search__hint">
+            Powered by OpenAI - describe what you want to cook or eat
+          </p>
+          <p
+            class="ai-search__result"
+            id="aiSearchResult"
+            aria-live="polite"
+            aria-atomic="true"
+          ></p>
+        </div>
+
+        <div
+          class="produce-filter"
+          role="group"
+          aria-label="Filter produce by category"
+        >
+          <button
+            class="filter-chip filter-chip--active"
+            data-filter="all"
+            aria-pressed="true"
+          >
+            All
+          </button>
+          <button class="filter-chip" data-filter="grains" aria-pressed="false">
+            Grains
+          </button>
+          <button
+            class="filter-chip"
+            data-filter="vegetables"
+            aria-pressed="false"
+          >
+            Vegetables
+          </button>
+        </div>
+        <span id="filterCount" aria-live="polite" aria-atomic="true"></span>
+
+        <ul class="produce-grid" aria-label="Available produce">
+          <li>
+            <article
+              class="produce-card produce-card--tall"
+              data-category="grains"
+              aria-label="Oats, 16 kr per kg"
+            >
+              <div class="produce-card__img-wrap">
+                <img
+                  src="pictures/oats.jpg"
+                  alt="Close-up of pale golden rolled oat flakes"
+                  class="produce-card__img"
+                  width="400"
+                  height="533"
+                />
+                <button
+                  class="produce-card__add"
+                  data-id="1"
+                  aria-label="Add Oats to basket — 16 kr / kg"
+                >
+                  Add to basket
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="12" y1="19" x2="12" y2="5" />
+                    <polyline points="5 12 12 5 19 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="produce-card__info">
+                <span class="produce-card__name">Oats</span>
+                <span class="produce-card__price">16 kr / kg</span>
+              </div>
+              <span class="produce-card__weight">1 kg</span>
+            </article>
+          </li>
+
+          <li>
+            <article
+              class="produce-card produce-card--tall"
+              data-category="vegetables"
+              aria-label="Red Onions, 45 kr per kg"
+            >
+              <div class="produce-card__img-wrap">
+                <img
+                  src="pictures/red onions.jpg"
+                  alt="Pile of deep red and purple onions"
+                  class="produce-card__img"
+                  loading="lazy"
+                  width="400"
+                  height="533"
+                />
+                <button
+                  class="produce-card__add"
+                  data-id="2"
+                  aria-label="Add Red Onions to basket — 45 kr / kg"
+                >
+                  Add to basket
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="12" y1="19" x2="12" y2="5" />
+                    <polyline points="5 12 12 5 19 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="produce-card__info">
+                <span class="produce-card__name">Red Onions</span>
+                <span class="produce-card__price">45 kr / kg</span>
+              </div>
+              <span class="produce-card__weight">1 kg</span>
+            </article>
+          </li>
+
+          <li>
+            <article
+              class="produce-card produce-card--tall"
+              data-category="vegetables"
+              aria-label="Garlic, 38 kr"
+            >
+              <div class="produce-card__img-wrap">
+                <img
+                  src="pictures/garlic.jpg"
+                  alt="Several bulbs of fresh white garlic"
+                  class="produce-card__img"
+                  loading="lazy"
+                  width="400"
+                  height="533"
+                />
+                <button
+                  class="produce-card__add"
+                  data-id="3"
+                  aria-label="Add Garlic to basket — 38 kr"
+                >
+                  Add to basket
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="12" y1="19" x2="12" y2="5" />
+                    <polyline points="5 12 12 5 19 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="produce-card__info">
+                <span class="produce-card__name">Garlic</span>
+                <span class="produce-card__price">38 kr</span>
+              </div>
+              <span class="produce-card__weight">0.2 kg</span>
+            </article>
+          </li>
+
+          <li>
+            <article
+              class="produce-card produce-card--tall"
+              data-category="vegetables"
+              aria-label="Potato, 32 kr per kg"
+            >
+              <div class="produce-card__img-wrap">
+                <img
+                  src="pictures/potatoes.jpg"
+                  alt="Pile of small golden new potatoes"
+                  class="produce-card__img"
+                  loading="lazy"
+                  width="400"
+                  height="533"
+                />
+                <button
+                  class="produce-card__add"
+                  data-id="4"
+                  aria-label="Add Potato to basket — 32 kr / kg"
+                >
+                  Add to basket
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="12" y1="19" x2="12" y2="5" />
+                    <polyline points="5 12 12 5 19 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="produce-card__info">
+                <span class="produce-card__name">Potato</span>
+                <span class="produce-card__price">32 kr / kg</span>
+              </div>
+              <span class="produce-card__weight">1 kg</span>
+            </article>
+          </li>
+
+          <li>
+            <article
+              class="produce-card produce-card--tall"
+              data-category="vegetables"
+              aria-label="Carrots, 48 kr per kg"
+            >
+              <div class="produce-card__img-wrap">
+                <img
+                  src="pictures/carrots.jpg"
+                  alt="Fresh orange carrots"
+                  class="produce-card__img"
+                  loading="lazy"
+                  width="400"
+                  height="533"
+                />
+                <button
+                  class="produce-card__add"
+                  data-id="5"
+                  aria-label="Add Carrots to basket — 48 kr / kg"
+                >
+                  Add to basket
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="12" y1="19" x2="12" y2="5" />
+                    <polyline points="5 12 12 5 19 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="produce-card__info">
+                <span class="produce-card__name">Carrots</span>
+                <span class="produce-card__price">48 kr / kg</span>
+              </div>
+              <span class="produce-card__weight">1 kg</span>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+      <section class="farms" aria-labelledby="farms-title">
+        <div class="farms__left">
+          <h2 id="farms-title" class="farms__title">
+            SEE OUR<br />PARTNERING FARMS
+          </h2>
+        </div>
+        <div
+          class="farms__map"
+          id="map"
+          role="application"
+          aria-label="Interactive map showing Braastad Gaard farm location"
+        >
+          <div id="mapFallback" class="farms__map-fallback">
+            <p>📍 Braastad Gaard, Oppdalslinna 242, 2740 Roa, Norway</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="footer__inner">
+        <a
+          href="index.html"
+          class="footer__logo"
+          aria-label="Fram — go to homepage"
+          >FRAM</a
+        >
+        <hr class="footer__rule" aria-hidden="true" />
+        <h2 class="footer__heading">STAY UPDATED</h2>
+        <p class="footer__body">
+          Sign up for our newsletter to be the first to know about new produce
+          or other exciting news!
+        </p>
+        <form
+          id="newsletterForm"
+          novalidate
+          aria-label="Newsletter sign-up form"
+        >
+          <div class="footer__field">
+            <label for="footerEmail" class="sr-only">Email address</label>
+            <input
+              type="email"
+              id="footerEmail"
+              name="email"
+              placeholder="E-mail address"
+              autocomplete="email"
+              aria-required="true"
+              aria-describedby="emailError"
+            />
+            <span
+              id="emailError"
+              class="form-error"
+              role="alert"
+              aria-live="polite"
+            ></span>
+          </div>
+          <div class="footer__field--arrow">
+            <button
+              type="submit"
+              class="footer__arrow"
+              aria-label="Subscribe to newsletter"
+            >
+              →
+            </button>
+          </div>
+        </form>
+      </div>
+    </footer>
+
+    <aside
+      class="basket-drawer"
+      id="basketDrawer"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="basketTitle"
+    >
+      <div class="basket-drawer__overlay" id="basketOverlay"></div>
+      <div class="basket-drawer__panel">
+        <div class="basket-drawer__header">
+          <h2 id="basketTitle" class="basket-drawer__title">Your Basket</h2>
+          <button
+            class="basket-drawer__close"
+            id="basketClose"
+            aria-label="Close basket"
+          >
+            ✕
+          </button>
+        </div>
+        <div
+          class="basket-drawer__items"
+          id="basketItems"
+          role="list"
+          aria-label="Items in your basket"
+          aria-live="polite"
+        ></div>
+        <div class="basket-drawer__footer">
+          <div class="basket-drawer__total">
+            <span>Total</span>
+            <span id="basketTotal">kr 0</span>
+          </div>
+          <button class="btn btn--red btn--full" id="checkoutBtn">
+            Checkout
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <div
+      id="toast"
+      class="toast"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
