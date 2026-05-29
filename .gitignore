@@ -1,0 +1,57 @@
+# ============================================================
+# Fram Webshop — .gitignore
+# ============================================================
+
+# ── API keys & secrets ──────────────────────────────────────
+# Never commit API keys. If you create a .env file, keep it here.
+.env
+.env.local
+.env.production
+secrets.js
+config.local.js
+
+# ── OS generated files ──────────────────────────────────────
+.DS_Store           # macOS folder metadata
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db           # Windows thumbnail cache
+ehthumbs.db
+Desktop.ini
+
+# ── Editor / IDE files ──────────────────────────────────────
+.vscode/            # VS Code workspace settings (optional — some teams commit this)
+.idea/              # JetBrains IDEs
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp             # Vim swap files
+
+# ── Node (if you add a build step later) ────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+package-lock.json   # uncomment if your team prefers not to commit this
+
+# ── Build output (if you add a bundler later) ───────────────
+dist/
+build/
+.cache/
+.parcel-cache/
+
+# ── Local development server logs ───────────────────────────
+*.log
+
+# ── Screenshots (generate fresh each time) ──────────────────
+# Remove this line if you want to commit screenshots to the README
+# screenshots/
+
+# ── Temporary files ─────────────────────────────────────────
+*.tmp
+*.bak
+*.orig

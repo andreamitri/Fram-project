@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Home — Fram, home delivery from your local farms</title>
+    <meta
+      name="description"
+      content="Fram delivers fresh, seasonal produce directly from local Norwegian farms to your door."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400&family=Arimo:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="nav" id="nav">
+      <button
+        class="nav__menu-btn"
+        id="menuBtn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navDrawer"
+      >
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+      <a href="index.html" class="nav__logo" aria-label="Fram — go to homepage"
+        >FRAM</a
+      >
+      <a
+        href="products.html"
+        class="nav__basket"
+        id="basketBtn"
+        aria-label="Basket, 0 items"
+      >
+        <span id="basketCount" aria-hidden="true">0</span>
+      </a>
+    </header>
+
+    <div
+      class="drawer"
+      id="navDrawer"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
+    >
+      <div class="drawer__overlay" id="drawerOverlay"></div>
+      <nav class="drawer__panel" aria-label="Site navigation">
+        <button
+          class="drawer__close"
+          id="drawerClose"
+          aria-label="Close navigation menu"
+        >
+          ✕
+        </button>
+        <a href="index.html" class="drawer__link" aria-current="page">HOME</a>
+        <a href="products.html" class="drawer__link">PRODUCTS</a>
+        <a href="chat.html" class="drawer__link">CHAT</a>
+        <a href="order.html" class="drawer__link drawer__link--checkout"
+          >CHECKOUT</a
+        >
+      </nav>
+    </div>
+
+    <main id="main-content" tabindex="-1">
+      <section class="hero" aria-labelledby="hero-heading">
+        <img
+          src="Pictures/header image.jpg"
+          alt=""
+          class="hero__img"
+          role="presentation"
+        />
+        <div class="hero__content">
+          <h1 id="hero-heading" class="hero__logo">FRAM</h1>
+          <div class="hero__divider" aria-hidden="true"></div>
+          <p class="hero__tagline">HOME DELIVERY FROM<br />YOUR LOCAL FARMS</p>
+        </div>
+      </section>
+
+      <section class="panels" aria-labelledby="panels-heading">
+        <h2 id="panels-heading" class="sr-only">Our services</h2>
+        <div class="panel">
+          <h3 class="panel__heading">SHOP OUR SEASONAL<br />SELECTION</h3>
+          <p class="panel__accent">Updated every week</p>
+          <img
+            src="Pictures/shop selection.jpg"
+            alt="A wicker basket filled with fresh seasonal vegetables including tomatoes, courgettes and beans"
+            class="panel__img"
+            loading="lazy"
+          />
+          <p class="panel__body">
+            New produce is added continuously as time goes by and the seasons
+            change.
+          </p>
+          <a href="products.html" class="btn btn--red">Browse our selection</a>
+        </div>
+        <div class="panel panel--right">
+          <h3 class="panel__heading">ASK US ABOUT<br />ANYTHING</h3>
+          <p class="panel__accent">All your questions answered</p>
+          <img
+            src="Pictures/go to chat.jpg"
+            alt="A farmer pointing across green fields with hay bales in the background"
+            class="panel__img"
+            loading="lazy"
+          />
+          <p class="panel__body">
+            New produce is added continuously as time goes by and the seasons
+            change.
+          </p>
+          <a href="chat.html" class="btn btn--red">Go to chat</a>
+        </div>
+      </section>
+
+      <section class="hiw" aria-labelledby="hiw-title">
+        <div class="hiw__left">
+          <h2 id="hiw-title" class="hiw__title">THIS IS HOW IT<br />WORKS</h2>
+        </div>
+        <ol class="hiw__right" aria-label="Steps">
+          <li class="hiw__step">
+            <h3 class="hiw__step-name">ORDER GROCERIES</h3>
+            <p class="hiw__step-body">
+              Fram is a circular service that ensures your kitchen is always
+              stocked with the essentials you need. Browse our seasonal
+              selection, choose your items, and place your order online.
+            </p>
+            <a href="products.html" class="hiw__link">See our stock here</a>
+          </li>
+          <li class="hiw__step">
+            <h3 class="hiw__step-name">STOCK UP</h3>
+            <p class="hiw__step-body">
+              Once your order arrives, unpack the produce and store it however
+              it works best for you. Hold onto the containers they're yours to
+              keep until your next order.
+            </p>
+          </li>
+          <li class="hiw__step">
+            <h3 class="hiw__step-name">SCAN &amp; REORDER</h3>
+            <p class="hiw__step-body">
+              Ready for a refill? Grab the containers from your last order and
+              scan the QR code with our app or your phone's camera. This
+              instantly adds the items back to your cart.
+            </p>
+          </li>
+          <li class="hiw__step">
+            <h3 class="hiw__step-name">SWAP &amp; REUSE</h3>
+            <p class="hiw__step-body">
+              When we deliver your new order, simply leave your empty containers
+              outside. We'll pick them up, clean them thoroughly, and reuse them
+              for future deliveries.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="popular" aria-labelledby="popular-title">
+        <h2 id="popular-title" class="popular__title">POPULAR PRODUCE</h2>
+        <ul class="popular__grid" role="list">
+          <li>
+            <article class="produce-card" aria-label="Oats, 16 kr per kg">
+              <div class="produce-card__img-wrap">
+                <img
+                  src="Pictures/oats.jpg"
+                  alt="Close-up of pale golden rolled oat flakes"
+                  class="produce-card__img"
+                  width="400"
+                  height="400"
+                />
+                <button
+                  class="produce-card__add"
+                  data-id="1"
+                  aria-label="Add Oats to basket — 16 kr / kg"
+                >
+                  Add to basket
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="12" y1="19" x2="12" y2="5" />
+                    <polyline points="5 12 12 5 19 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="produce-card__info">
+                <span class="produce-card__name">Oats</span>
+                <span class="produce-card__price">16 kr / kg</span>
+              </div>
+              <span class="produce-card__weight">1 kg</span>
+            </article>
+          </li>
+
+          <li>
+            <article class="produce-card" aria-label="Red Onions, 45 kr per kg">
+              <div class="produce-card__img-wrap">
+                <img
+                  src="Pictures/red onions.jpg"
+                  alt="Pile of deep red and purple onions"
+                  class="produce-card__img"
+                  loading="lazy"
+                  width="400"
+                  height="400"
+                />
+                <button
+                  class="produce-card__add"
+                  data-id="2"
+                  aria-label="Add Red Onions to basket — 45 kr / kg"
+                >
+                  Add to basket
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="12" y1="19" x2="12" y2="5" />
+                    <polyline points="5 12 12 5 19 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="produce-card__info">
+                <span class="produce-card__name">Red Onions</span>
+                <span class="produce-card__price">45 kr / kg</span>
+              </div>
+              <span class="produce-card__weight">0.5 kg</span>
+            </article>
+          </li>
+
+          <li>
+            <article class="produce-card" aria-label="Garlic, 38 kr">
+              <div class="produce-card__img-wrap">
+                <img
+                  src="Pictures/garlic.jpg"
+                  alt="Several bulbs of fresh white garlic"
+                  class="produce-card__img"
+                  loading="lazy"
+                  width="400"
+                  height="400"
+                />
+                <button
+                  class="produce-card__add"
+                  data-id="3"
+                  aria-label="Add Garlic to basket — 38 kr"
+                >
+                  Add to basket
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <line x1="12" y1="19" x2="12" y2="5" />
+                    <polyline points="5 12 12 5 19 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="produce-card__info">
+                <span class="produce-card__name">Garlic</span>
+                <span class="produce-card__price">38 kr</span>
+              </div>
+              <span class="produce-card__weight">0.2 kg</span>
+            </article>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="footer__inner">
+        <a
+          href="index.html"
+          class="footer__logo"
+          aria-label="Fram — go to homepage"
+          >FRAM</a
+        >
+        <hr class="footer__rule" aria-hidden="true" />
+        <h2 class="footer__heading">STAY UPDATED</h2>
+        <p class="footer__body">
+          Sign up for our newsletter to be the first to know about new produce
+          or other exciting news!
+        </p>
+        <form
+          id="newsletterForm"
+          novalidate
+          aria-label="Newsletter sign-up form"
+        >
+          <div class="footer__field">
+            <label for="footerFname" class="sr-only">First name</label>
+            <input
+              type="text"
+              id="footerFname"
+              name="fname"
+              placeholder="First name"
+              autocomplete="given-name"
+            />
+          </div>
+          <div class="footer__field" style="margin-top: 12px">
+            <label for="footerEmail" class="sr-only">Email address</label>
+            <input
+              type="email"
+              id="footerEmail"
+              name="email"
+              placeholder="E-mail address"
+              autocomplete="email"
+              aria-required="true"
+              aria-describedby="emailError"
+            />
+            <span
+              id="emailError"
+              class="form-error"
+              role="alert"
+              aria-live="polite"
+            ></span>
+          </div>
+          <button type="submit" class="footer__send" style="margin-top: 12px">
+            Send
+          </button>
+        </form>
+      </div>
+    </footer>
+
+    <div
+      id="toast"
+      class="toast"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <script src="main.js"></script>
+  </body>
+</html>
