@@ -1,7 +1,6 @@
 "use strict";
 
-const OPENAI_API_KEY =
-  "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";
+const OPENAI_API_KEY = "placeholder";
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 const OPENAI_MODEL = "gpt-4o-mini";
 
